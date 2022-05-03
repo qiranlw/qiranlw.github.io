@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>学习 Emacs 第一天 | 不知其所以然</title>
+<meta name="keywords" content="">
+<meta name="description" content="这是一个 Emacs 的学习笔记，希望自己可以通过写这个博客记录自己学习 Emacs 的过程。由于我以前没有写过任何的博客，希望自己能通过这次学习 Emacs 的机会开始我的博客。其实我是一个没什么恒心的人，对自己的要求也没有那么高，这个博客有可能写不了多少就停止更新了。为了不影响那些想继续学习下去的人，我会把我学习过程中用到的资料都放在本文的最后，你可以通过这些学习资料继续学习下去，祝你能熟练掌握 Emacs ，成为一个高手。
+为什么要学习 Emacs   我学习 Emacs 的原因首先是为了装X，这是不得不承认的事实，我并不是一个爱钻研的人，学习 Emacs 是一个很装X的事情。
+ Emacs 是一个我一直知道却一点也不会的东西，在学习 Vim 的过程中就知道了 Emacs 的存在。可是我一直以来就没有相关学习它，因为我觉得学习 Vim 就够为难我了，我实在没有学习 Emacs 的勇气。
+ 通过一个播客节目重新了解到了 Emacs 相关的一些知识，介绍了许多 Emacs 的学习方法和学习资料。
+ 我实在不喜欢 Vim 需要退出编辑模式才能移动光标（我对Vim 的了解很少，只是用来修改一些服务器上的配置文件）。
+ 不管怎样也要会正确的退出 Emacs 吧。
+  安装 Emacs   其实安装 Emacs 很简单，不论是window系统还是Linux系统或Mac系统都可以从官网下载安装包。如果你安装都搞不定的话，你还是把这个页面关了吧，Emacs 真的不适合你。安装时最好选择一个比较新的版本。
+Windows 安装   从官网把安装包下载下来，找一个合适的目录把下载的压缩包解压出来就可以了。然后你就可以在 bin 目录下找到 runemacs.exe 运行就可以。运行这个命令会再桌面上创建一个快捷方式，你可以通过双击快捷方式启动。你还可以在 bin 目录下找到一个 addpm.exe 应用程序，执行这个程序会将 Emacs 添加到你的开始菜单中，你就可以从开始菜单中启动 Emacs 了。">
+<meta name="author" content="">
+<link rel="canonical" href="https://qiranlw.github.io/posts/learn-emacs-day-one/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://qiranlw.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://qiranlw.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://qiranlw.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://qiranlw.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://qiranlw.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="学习 Emacs 第一天" />
+<meta property="og:description" content="这是一个 Emacs 的学习笔记，希望自己可以通过写这个博客记录自己学习 Emacs 的过程。由于我以前没有写过任何的博客，希望自己能通过这次学习 Emacs 的机会开始我的博客。其实我是一个没什么恒心的人，对自己的要求也没有那么高，这个博客有可能写不了多少就停止更新了。为了不影响那些想继续学习下去的人，我会把我学习过程中用到的资料都放在本文的最后，你可以通过这些学习资料继续学习下去，祝你能熟练掌握 Emacs ，成为一个高手。
+为什么要学习 Emacs   我学习 Emacs 的原因首先是为了装X，这是不得不承认的事实，我并不是一个爱钻研的人，学习 Emacs 是一个很装X的事情。
+ Emacs 是一个我一直知道却一点也不会的东西，在学习 Vim 的过程中就知道了 Emacs 的存在。可是我一直以来就没有相关学习它，因为我觉得学习 Vim 就够为难我了，我实在没有学习 Emacs 的勇气。
+ 通过一个播客节目重新了解到了 Emacs 相关的一些知识，介绍了许多 Emacs 的学习方法和学习资料。
+ 我实在不喜欢 Vim 需要退出编辑模式才能移动光标（我对Vim 的了解很少，只是用来修改一些服务器上的配置文件）。
+ 不管怎样也要会正确的退出 Emacs 吧。
+  安装 Emacs   其实安装 Emacs 很简单，不论是window系统还是Linux系统或Mac系统都可以从官网下载安装包。如果你安装都搞不定的话，你还是把这个页面关了吧，Emacs 真的不适合你。安装时最好选择一个比较新的版本。
+Windows 安装   从官网把安装包下载下来，找一个合适的目录把下载的压缩包解压出来就可以了。然后你就可以在 bin 目录下找到 runemacs.exe 运行就可以。运行这个命令会再桌面上创建一个快捷方式，你可以通过双击快捷方式启动。你还可以在 bin 目录下找到一个 addpm.exe 应用程序，执行这个程序会将 Emacs 添加到你的开始菜单中，你就可以从开始菜单中启动 Emacs 了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://qiranlw.github.io/posts/learn-emacs-day-one/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-03T13:57:08&#43;08:00" />
+<meta property="article:modified_time" content="2022-05-03T13:57:08&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="学习 Emacs 第一天"/>
+<meta name="twitter:description" content="这是一个 Emacs 的学习笔记，希望自己可以通过写这个博客记录自己学习 Emacs 的过程。由于我以前没有写过任何的博客，希望自己能通过这次学习 Emacs 的机会开始我的博客。其实我是一个没什么恒心的人，对自己的要求也没有那么高，这个博客有可能写不了多少就停止更新了。为了不影响那些想继续学习下去的人，我会把我学习过程中用到的资料都放在本文的最后，你可以通过这些学习资料继续学习下去，祝你能熟练掌握 Emacs ，成为一个高手。
+为什么要学习 Emacs   我学习 Emacs 的原因首先是为了装X，这是不得不承认的事实，我并不是一个爱钻研的人，学习 Emacs 是一个很装X的事情。
+ Emacs 是一个我一直知道却一点也不会的东西，在学习 Vim 的过程中就知道了 Emacs 的存在。可是我一直以来就没有相关学习它，因为我觉得学习 Vim 就够为难我了，我实在没有学习 Emacs 的勇气。
+ 通过一个播客节目重新了解到了 Emacs 相关的一些知识，介绍了许多 Emacs 的学习方法和学习资料。
+ 我实在不喜欢 Vim 需要退出编辑模式才能移动光标（我对Vim 的了解很少，只是用来修改一些服务器上的配置文件）。
+ 不管怎样也要会正确的退出 Emacs 吧。
+  安装 Emacs   其实安装 Emacs 很简单，不论是window系统还是Linux系统或Mac系统都可以从官网下载安装包。如果你安装都搞不定的话，你还是把这个页面关了吧，Emacs 真的不适合你。安装时最好选择一个比较新的版本。
+Windows 安装   从官网把安装包下载下来，找一个合适的目录把下载的压缩包解压出来就可以了。然后你就可以在 bin 目录下找到 runemacs.exe 运行就可以。运行这个命令会再桌面上创建一个快捷方式，你可以通过双击快捷方式启动。你还可以在 bin 目录下找到一个 addpm.exe 应用程序，执行这个程序会将 Emacs 添加到你的开始菜单中，你就可以从开始菜单中启动 Emacs 了。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://qiranlw.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "学习 Emacs 第一天",
+      "item": "https://qiranlw.github.io/posts/learn-emacs-day-one/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "学习 Emacs 第一天",
+  "name": "学习 Emacs 第一天",
+  "description": "这是一个 Emacs 的学习笔记，希望自己可以通过写这个博客记录自己学习 Emacs 的过程。由于我以前没有写过任何的博客，希望自己能通过这次学习 Emacs 的机会开始我的博客。其实我是一个没什么恒心的人，对自己的要求也没有那么高，这个博客有可能写不了多少就停止更新了。为了不影响那些想继续学习下去的人，我会把我学习过程中用到的资料都放在本文的最后，你可以通过这些学习资料继续学习下去，祝你能熟练掌握 Emacs ，成为一个高手。\n为什么要学习 Emacs   我学习 Emacs 的原因首先是为了装X，这是不得不承认的事实，我并不是一个爱钻研的人，学习 Emacs 是一个很装X的事情。\n Emacs 是一个我一直知道却一点也不会的东西，在学习 Vim 的过程中就知道了 Emacs 的存在。可是我一直以来就没有相关学习它，因为我觉得学习 Vim 就够为难我了，我实在没有学习 Emacs 的勇气。\n 通过一个播客节目重新了解到了 Emacs 相关的一些知识，介绍了许多 Emacs 的学习方法和学习资料。\n 我实在不喜欢 Vim 需要退出编辑模式才能移动光标（我对Vim 的了解很少，只是用来修改一些服务器上的配置文件）。\n 不管怎样也要会正确的退出 Emacs 吧。\n  安装 Emacs   其实安装 Emacs 很简单，不论是window系统还是Linux系统或Mac系统都可以从官网下载安装包。如果你安装都搞不定的话，你还是把这个页面关了吧，Emacs 真的不适合你。安装时最好选择一个比较新的版本。\nWindows 安装   从官网把安装包下载下来，找一个合适的目录把下载的压缩包解压出来就可以了。然后你就可以在 bin 目录下找到 runemacs.exe 运行就可以。运行这个命令会再桌面上创建一个快捷方式，你可以通过双击快捷方式启动。你还可以在 bin 目录下找到一个 addpm.exe 应用程序，执行这个程序会将 Emacs 添加到你的开始菜单中，你就可以从开始菜单中启动 Emacs 了。",
+  "keywords": [
+    
+  ],
+  "articleBody": "  这是一个 Emacs 的学习笔记，希望自己可以通过写这个博客记录自己学习 Emacs 的过程。由于我以前没有写过任何的博客，希望自己能通过这次学习 Emacs 的机会开始我的博客。其实我是一个没什么恒心的人，对自己的要求也没有那么高，这个博客有可能写不了多少就停止更新了。为了不影响那些想继续学习下去的人，我会把我学习过程中用到的资料都放在本文的最后，你可以通过这些学习资料继续学习下去，祝你能熟练掌握 Emacs ，成为一个高手。\n为什么要学习 Emacs   我学习 Emacs 的原因首先是为了装X，这是不得不承认的事实，我并不是一个爱钻研的人，学习 Emacs 是一个很装X的事情。\n Emacs 是一个我一直知道却一点也不会的东西，在学习 Vim 的过程中就知道了 Emacs 的存在。可是我一直以来就没有相关学习它，因为我觉得学习 Vim 就够为难我了，我实在没有学习 Emacs 的勇气。\n 通过一个播客节目重新了解到了 Emacs 相关的一些知识，介绍了许多 Emacs 的学习方法和学习资料。\n 我实在不喜欢 Vim 需要退出编辑模式才能移动光标（我对Vim 的了解很少，只是用来修改一些服务器上的配置文件）。\n 不管怎样也要会正确的退出 Emacs 吧。\n  安装 Emacs   其实安装 Emacs 很简单，不论是window系统还是Linux系统或Mac系统都可以从官网下载安装包。如果你安装都搞不定的话，你还是把这个页面关了吧，Emacs 真的不适合你。安装时最好选择一个比较新的版本。\nWindows 安装   从官网把安装包下载下来，找一个合适的目录把下载的压缩包解压出来就可以了。然后你就可以在 bin 目录下找到 runemacs.exe 运行就可以。运行这个命令会再桌面上创建一个快捷方式，你可以通过双击快捷方式启动。你还可以在 bin 目录下找到一个 addpm.exe 应用程序，执行这个程序会将 Emacs 添加到你的开始菜单中，你就可以从开始菜单中启动 Emacs 了。\n  Mac 安装   直接打开终端，再终端中输入下面的命令并执行就可以了（我没有Mac电脑，没有测试过，希望有人赞助我一个 Mac 电脑我测试一下）。\nbrew install emacs --with-cocoa    Linux 安装  由于 Linux 有很多的发行版本，不同的发行版的安装方式不太相同，我就不一一介绍了，你连 Linux 系统都装好了，安装 Emacs 一定难不倒你，祝你能安装成功。\n    退出 Emacs   本文最重要的内容来了，如何退出 Emacs 呢？其实这是一个很简单。首先不要在 Emacs 中乱按。你是不可能试出来的。\n 退出的命令是先按Ctrl + x然后再按 Ctrl + c就可以了，如何你这么操作还是不能退出，很有可能是之前你按了其他快捷键，这时你要先退出上一个没有完成的命令，方法是先按 Ctrl + g，可以多按几次，直到程序左下角显示 Quit 为止。然后再输入退出的命令就可以正常退出了。\n 如果你用 Emacs 打开了一些文件并修改一些内容，退出的时候会提示你保存修改内容，你想要保存内容的话就直接输入 y就可以了，不想保存的话输入 n，这时还是无法退出，再输入no就可以了。\n 这里再介绍一下保存文件的命令，先输入Ctrl + x，再输入Ctrl + s就可以了。\n  学习资料   Emacs 官网: http://www.gnu.org/software/emacs/\n EmacsTalk 播客: https://emacstalk.github.io/\n 一年成为 Emacs 高手: https://blog.csdn.net/redguardtoo/article/details/7222501/\n 子龙山人视频资料: https://space.bilibili.com/292659700\n Learning GNU Emacs: https://pan.baidu.com/s/1nwsbAZJ\n  ",
+  "wordCount" : "122",
+  "inLanguage": "en",
+  "datePublished": "2022-05-03T13:57:08+08:00",
+  "dateModified": "2022-05-03T13:57:08+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://qiranlw.github.io/posts/learn-emacs-day-one/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "不知其所以然",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://qiranlw.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://qiranlw.github.io/" accesskey="h" title="不知其所以然 (Alt + H)">不知其所以然</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      学习 Emacs 第一天
+    </h1>
+    <div class="post-meta"><span title='2022-05-03 13:57:08 +0800 CST'>May 3, 2022</span>
+
+</div>
+  </header> 
+  <div class="post-content">
+<p>
+这是一个 Emacs 的学习笔记，希望自己可以通过写这个博客记录自己学习 Emacs 的过程。由于我以前没有写过任何的博客，希望自己能通过这次学习 Emacs 的机会开始我的博客。其实我是一个没什么恒心的人，对自己的要求也没有那么高，这个博客有可能写不了多少就停止更新了。为了不影响那些想继续学习下去的人，我会把我学习过程中用到的资料都放在本文的最后，你可以通过这些学习资料继续学习下去，祝你能熟练掌握  Emacs ，成为一个高手。</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+为什么要学习 Emacs
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>
+我学习 Emacs 的原因首先是为了装X，这是不得不承认的事实，我并不是一个爱钻研的人，学习 Emacs 是一个很装X的事情。</p>
+<p>
+Emacs 是一个我一直知道却一点也不会的东西，在学习 Vim 的过程中就知道了 Emacs 的存在。可是我一直以来就没有相关学习它，因为我觉得学习 Vim 就够为难我了，我实在没有学习 Emacs 的勇气。</p>
+<p>
+通过一个播客节目重新了解到了 Emacs 相关的一些知识，介绍了许多 Emacs 的学习方法和学习资料。</p>
+<p>
+我实在不喜欢 Vim 需要退出编辑模式才能移动光标（我对Vim 的了解很少，只是用来修改一些服务器上的配置文件）。</p>
+<p>
+不管怎样也要会正确的退出 Emacs 吧。</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+安装 Emacs
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>
+其实安装 Emacs 很简单，不论是window系统还是Linux系统或Mac系统都可以从官网下载安装包。如果你安装都搞不定的话，你还是把这个页面关了吧，Emacs 真的不适合你。安装时最好选择一个比较新的版本。</p>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+Windows 安装
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>
+从官网把安装包下载下来，找一个合适的目录把下载的压缩包解压出来就可以了。然后你就可以在 bin 目录下找到 runemacs.exe 运行就可以。运行这个命令会再桌面上创建一个快捷方式，你可以通过双击快捷方式启动。你还可以在 bin 目录下找到一个 addpm.exe 应用程序，执行这个程序会将 Emacs 添加到你的开始菜单中，你就可以从开始菜单中启动 Emacs 了。</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
+Mac 安装
+</h3>
+<div id="outline-text-headline-4" class="outline-text-3">
+<p>
+直接打开终端，再终端中输入下面的命令并执行就可以了（我没有Mac电脑，没有测试过，希望有人赞助我一个 Mac 电脑我测试一下）。</p>
+<div class="src src-bash">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install emacs --with-cocoa</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+Linux 安装
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<p>由于 Linux 有很多的发行版本，不同的发行版的安装方式不太相同，我就不一一介绍了，你连 Linux 系统都装好了，安装 Emacs 一定难不倒你，祝你能安装成功。</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-2">
+<h2 id="headline-6">
+退出 Emacs
+</h2>
+<div id="outline-text-headline-6" class="outline-text-2">
+<p>
+本文最重要的内容来了，如何退出 Emacs 呢？其实这是一个很简单。首先不要在 Emacs 中乱按。你是不可能试出来的。</p>
+<p>
+退出的命令是先按Ctrl + x然后再按 Ctrl + c就可以了，如何你这么操作还是不能退出，很有可能是之前你按了其他快捷键，这时你要先退出上一个没有完成的命令，方法是先按 Ctrl + g，可以多按几次，直到程序左下角显示 Quit 为止。然后再输入退出的命令就可以正常退出了。</p>
+<p>
+如果你用 Emacs 打开了一些文件并修改一些内容，退出的时候会提示你保存修改内容，你想要保存内容的话就直接输入 y就可以了，不想保存的话输入 n，这时还是无法退出，再输入no就可以了。</p>
+<p>
+这里再介绍一下保存文件的命令，先输入Ctrl + x，再输入Ctrl + s就可以了。</p>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-2">
+<h2 id="headline-7">
+学习资料
+</h2>
+<div id="outline-text-headline-7" class="outline-text-2">
+<p>
+Emacs 官网: <a href="http://www.gnu.org/software/emacs/">http://www.gnu.org/software/emacs/</a></p>
+<p>
+EmacsTalk 播客: <a href="https://emacstalk.github.io/">https://emacstalk.github.io/</a></p>
+<p>
+一年成为 Emacs 高手: <a href="https://blog.csdn.net/redguardtoo/article/details/7222501/">https://blog.csdn.net/redguardtoo/article/details/7222501/</a></p>
+<p>
+子龙山人视频资料: <a href="https://space.bilibili.com/292659700">https://space.bilibili.com/292659700</a></p>
+<p>
+Learning GNU Emacs: <a href="https://pan.baidu.com/s/1nwsbAZJ">https://pan.baidu.com/s/1nwsbAZJ</a></p>
+</div>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://qiranlw.github.io/">不知其所以然</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
